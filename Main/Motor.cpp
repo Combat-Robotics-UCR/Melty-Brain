@@ -1,35 +1,15 @@
-#include <Arduino.h>
-#include <ESP32Servo.h>
-#include "Motor.h"
-#include "Config.h"
+#include "motor.h"
 
-static Servo esc1;
-static Servo esc2;
-
-void motor_init() {
-  esc1.setPeriodHertz(50);
-  esc2.setPeriodHertz(50);
-
-  esc1.attach(MOTOR1, ESC_MIN, ESC_MAX);
-  esc2.attach(MOTOR2, ESC_MIN, ESC_MAX);
-
-  motor_stop();
-  delay(ESC_ARM);
+void motor::init(uint8_t pin){
+  _pin = pin;
+  ledcAttach(_pin, PWM_FREQUENCY_HZ, PWM_RESOLUTION_BITS);
 }
 
-void motor_set(float m1, float m2) {
-  m1 = constrain(m1, 0.0, 1.0);
-  m2 = constrain(m2, 0.0, 1.0);
-
-  int us1 = ESC_MIN + m1 * (ESC_MAX - ESC_MIN);
-  int us2 = ESC_MIN + m2 * (ESC_MAX - ESC_MIN);
-
-  esc1.writeMicroseconds(us1);
-  esc2.writeMicroseconds(us2);
-}
-
-void motor_stop() {
-
-  esc1.writeMicroseconds(ESC_MIN);
-  esc2.writeMicroseconds(ESC_MIN);
+// anything from 0 -> 100
+// duty = pulse_us * freq * total resolution / 1,000,000
+// 1523 -> 2046 maps to 5490 -> 7375
+// so step size of 18.85
+void motor::set_speed(unsigned long speed){
+  ledcWrite(_pin, (speed * ((_high_duty - _middle_duty) / 100.0)) + _middle_duty);
+  //Serial.println((speed * ((_high_duty - _middle_duty) / 100.0)) + _middle_duty);
 }

@@ -21,24 +21,10 @@ const float GYRO_LIMIT = 30.0;   // if spins faster than this go to spinning for
 const int MOTOR1 = 21;
 const int MOTOR2 = 32;
 
-//Motor constants
-const int ESC_MIN = 1000;
-const int ESC_MAX = 2000;
-const int ESC_ARM = 2000;
-
 //---------------------------------------------------------------
 
-//Reciever
-const int RX_PIN = 16;
-
-//Radio
-const int Steer_LeftRight = 0;
-const int Steer_UpDown = 1;
-const int Throttle = 2;
-const int Failsafe_Ms = 250;  //if no signal after x_ms everything stops
-const float DRIVE_STRENGTH = 0.3;
-
-//driving
-const float THROTTLE_DEADZONE = 0.05;
-const float STICK_DEADZONE = 0.15;
-const float DRIVE_BOOST = 0.2;
+//Reciever pins
+const int RC1 = 12;
+const int RC2 = 13;
+const int RC3 = 15;
+const int RC4 = 33;
