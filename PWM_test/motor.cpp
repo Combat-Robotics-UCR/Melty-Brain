@@ -11,5 +11,5 @@ void motor::init(uint8_t pin){
 // so step size of 18.85
 void motor::set_speed(unsigned long speed){
   ledcWrite(_pin, (speed * ((_high_duty - _middle_duty) / 100.0)) + _middle_duty);
-  Serial.println((speed * ((_high_duty - _middle_duty) / 100.0)) + _middle_duty);
+  //Serial.println((speed * ((_high_duty - _middle_duty) / 100.0)) + _middle_duty);
 }

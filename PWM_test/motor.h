@@ -1,10 +1,13 @@
+#ifndef MOTOR_H
+#define MOTOR_H
+
 //#define WIDTH_LOW_US      968
 #define WIDTH_MIDDLE_US       1521
 #define WIDTH_HIGH_US         2046
 #define PWM_FREQUENCY_HZ      59
 #define PWM_RESOLUTION_BITS   16
 
-#include <arduino.h>
+#include <Arduino.h>
 
 class motor {
   private:
@@ -16,3 +19,5 @@ class motor {
     void init(uint8_t);
     void set_speed(unsigned long); // anything from 0 -> 100
 };
+
+#endif  // MOTOR_H
