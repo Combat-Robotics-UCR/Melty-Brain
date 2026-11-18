@@ -54,3 +54,7 @@ float imu_get_omega() {
   if (gyro_z < 0) omega = -omega;
   return omega;
 }
+
+float imu_step_radius(float add) {
+  IMU_RADIUS += add;
+}

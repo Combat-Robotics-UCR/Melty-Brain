@@ -3,12 +3,9 @@
 #include "Config.h"
 
 void led_init() {
-
   pinMode(LED_PIN, OUTPUT);
-  pinMode(ERROR_LED, OUTPUT);
 
   digitalWrite(LED_PIN, LOW);
-  digitalWrite(ERROR_LED, LOW);
 }
 
 void led_update(float heading) {

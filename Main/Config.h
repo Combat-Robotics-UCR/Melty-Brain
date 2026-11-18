@@ -2,7 +2,6 @@
 
 // LEDs
 const int LED_PIN = 27;
-const int ERROR_LED = 13;
 const float BLINK_WIDTH = 0.5;  // how wide the flash in (radians)
 const float FORWARD = 0.0;      // front position
 
@@ -13,8 +12,8 @@ const int SDA_PIN = 23;
 const int SCL_PIN = 22;
 
 //MPU Limits
-const float IMU_RADIUS = 0.057;  //sensor distance from spin center (meters)
-const float GYRO_LIMIT = 30.0;   // if spins faster than this go to spinning force thingy
+float IMU_RADIUS = 0.057;  //sensor distance from spin center (meters)
+const float GYRO_LIMIT = 1.0;   // if spins faster than this go to spinning force thingy
 //---------------------------------------------------------------
 
 //ESCs signal wires
