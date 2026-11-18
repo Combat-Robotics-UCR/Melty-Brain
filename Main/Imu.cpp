@@ -17,6 +17,8 @@ bool imu_init() {
   if (!mpu.begin()) {
     return false;
   }
+  Wire.begin(SDA_PIN, SCL_PIN);
+  
   mpu.setGyroRange(MPU6050_RANGE_2000_DEG);
   mpu.setAccelerometerRange(MPU6050_RANGE_16_G);
   mpu.setFilterBandwidth(MPU6050_BAND_260_HZ);

@@ -12,13 +12,14 @@ class channel {
     volatile unsigned long _widthUs = 0;
     volatile unsigned long _riseTime = 0;
     volatile bool _update = false;
+    volatile bool _haveRise = false;
 
-    static void IRAM_ATTR wrapper(void* bridge) { static_cast<channel*>(bridge)->ISR(); }
-    void IRAM_ATTR ISR();
+    //static void IRAM_ATTR wrapper(void* object) { static_cast<channel*>(object)->ISR(); }
+    static void IRAM_ATTR ISR(void* object);
 
   public:
     void init(uint8_t);
-    bool updated();
+    bool updated() { return _update; }
     float getdata();
 };
 

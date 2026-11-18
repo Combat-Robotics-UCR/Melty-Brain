@@ -6,7 +6,7 @@
 #include "channel.h"
 
 motor m1, m2;
-channel rc1, rc2, rc3, rc4;
+channel rc1;
 
 float angle_diff(float a, float b) {
   float d = fmod(a - b, TWO_PI);
@@ -20,10 +20,7 @@ void setup() {
 
   led_init();
 
-  m1.init(MOTOR1);
-  m2.init(MOTOR2);
-
-  rc1.init(RC1);
+  //rc1.init(RC2);
   // rc2.init(RC2);
   // rc3.init(RC3);
   // rc4.init(RC4);
@@ -41,12 +38,29 @@ void setup() {
   heading_init();
 
   led_blink_code(3);
+
+  delay(1000);
+  rc1.init(RC1);
+
+  m2.init(MOTOR1);
+  m1.init(MOTOR2);
+
+  delay(1000);
+
+  m2.set_speed(0);
+  m1.set_speed(0);
+  delay(10000);
+  Serial.println("hi");
 }
 
 void loop() {
   if (rc1.updated()) {
-    m1.set_speed(rc1.getdata());
-    m2.set_speed(rc1.getdata());
+    float command = rc1.getdata();
+    Serial.println(command);
+    if (command < 10 && command > 0) {
+      m1.set_speed(command);
+      m2.set_speed(command);
+    }
   }
 
   imu_read();
