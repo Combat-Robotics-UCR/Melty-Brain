@@ -26,5 +26,5 @@ float channel::getdata() {
   _update = false;
   interrupts();
 
-  return (w - 1515.0) / 5.35;
+  return (w - 1515.0) / 26.75;
 }

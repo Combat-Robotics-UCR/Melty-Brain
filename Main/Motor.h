@@ -14,6 +14,7 @@ class motor {
     uint8_t _pin = 0;
     const float _middle_duty = WIDTH_MIDDLE_US * PWM_FREQUENCY_HZ * (65536.0 / 1000000.0);
     const float _high_duty = WIDTH_HIGH_US * PWM_FREQUENCY_HZ * (65536.0 / 1000000.0);
+    const float _step_size = (_high_duty - _middle_duty) / 100.0;
 
   public:
     void init(uint8_t);

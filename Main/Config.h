@@ -24,7 +24,6 @@ const int MOTOR2 = 32;
 //---------------------------------------------------------------
 
 //Reciever pins
-const int RC1 = 12;
-const int RC2 = 13;
-const int RC3 = 15;
-const int RC4 = 33;
+const int RC1 = 12; // CH1 
+const int RC2 = 17; // CH2
+const int RC3 = 15; // CH4
