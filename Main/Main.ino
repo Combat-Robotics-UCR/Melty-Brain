@@ -29,7 +29,7 @@ void setup() {
 
   imu_calibrate();
 
-  heading_init();
+  // heading_init();
 
   led_blink_code(3);
 
@@ -47,6 +47,8 @@ void setup() {
   m1.set_speed(0);
   delay(10000);
   Serial.println("hi");
+
+  digitalWrite(LED_PIN, HIGH);
 }
 
 void loop() {
@@ -94,8 +96,8 @@ void loop() {
     }
   }
 
-  imu_read();
-  heading_update(imu_get_omega());
-  float heading = heading_get();
-  led_update(heading);
+  // imu_read();
+  // heading_update(imu_get_omega());
+  // float heading = heading_get();
+  // led_update(heading);
 }
